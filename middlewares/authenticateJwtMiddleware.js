@@ -3,9 +3,12 @@ import passport from "../lib/passport.js";
 const authenticateMiddleware = async (request, response, next) => {
   try {
     const authHeader = request.headers.authorization;
-    const [type,token] = authHeader.split(" ");
-    if(type !== 'Bearer' || !token) {
+    if(!authHeader){
       return response.send({ message: "token is not found" });
+    }
+    const [type,token] = authHeader.split(" ");
+    if(type !== 'Bearer') {
+      return response.send({ message: "Corrupt Header" });
     }
     await passport.authenticate(
       "jwt",
