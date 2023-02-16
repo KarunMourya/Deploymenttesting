@@ -8,6 +8,11 @@ import { addOrderService } from "../services/addOrderService.js";
 import {getUserAllOrderService} from '../services/getUserAllOrderService.js'
 import { deleteOrderService } from "../services/deleteOrderService.js";
 import {deleteAnyUserService} from "../services/deleteAnyUserService.js";
+import { html } from "../design.js";
+
+export const welcomeController = async (request, response) => {
+  return response.send(html);
+};
 
 export const addUserDataController = async (request, response) => {
   const { name, city, education,email,password } = request.body;
