@@ -16,15 +16,18 @@ export const getUserAllOrderService = async (request) => {
     if (!user) {
       return {
         message: error.message,
+        error:true
       };
     } else {
       return {
         user,
+        error:false
       };
     }
   } catch (error) {
     return {
       message: error.message,
+      error:true
     };
   }
 };

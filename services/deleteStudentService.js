@@ -11,15 +11,18 @@ export const deleteStudentService = async (request) => {
     if (!deletedUser) {
       return {
         message: "unsuccessfully deleted",
+        error:true
       };
     } else {
       return {
         message: "successfully deleted",
+        error:false
       };
     }
   } catch (error) {
     return {
       message: error.message,
+      error:true
     };
   }
 };

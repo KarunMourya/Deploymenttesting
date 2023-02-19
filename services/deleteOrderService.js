@@ -12,15 +12,18 @@ export const deleteOrderService = async (request) => {
     if (!deletedOrder) {
       return {
         message: "unsuccessfully deleted",
+        error:true
       };
     } else {
       return {
         message: "successfully deleted",
+        error:false
       };
     }
   } catch (error) {
     return {
       message: error.message,
+      error:true
     };
   }
 };

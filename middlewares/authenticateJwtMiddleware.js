@@ -3,11 +3,11 @@ import passport from "../lib/passport.js";
 const authenticateMiddleware = async (request, response, next) => {
   try {
     const authHeader = request.headers.authorization;
-    if(!authHeader){
+    if (!authHeader) {
       return response.send({ message: "token is not found" });
     }
-    const [type,token] = authHeader.split(" ");
-    if(type !== 'Bearer') {
+    const [type, token] = authHeader.split(" ");
+    if (type !== "Bearer") {
       return response.send({ message: "Corrupt Header" });
     }
     await passport.authenticate(
@@ -15,12 +15,10 @@ const authenticateMiddleware = async (request, response, next) => {
       { session: false, failWithError: true },
       function (error, user, info) {
         if (error) {
-          return response
-            .send({ message: info });
+          return response.send({ message: info });
         }
         if (!user) {
-          return response
-            .send({ message: info });
+          return response.send({ message: info });
         }
         request.user = user;
         next();

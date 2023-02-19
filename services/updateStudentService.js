@@ -23,15 +23,18 @@ export const updateStudentService = async (request) => {
     if (!updatedStudent) {
       return {
         message: "unsuccessfully updation",
+        error:true
       };
     } else {
       return {
         message: "successfully updation",
+        error:false
       };
     }
   } catch (error) {
     return {
       message: error.message,
+      error:true
     };
   }
 };

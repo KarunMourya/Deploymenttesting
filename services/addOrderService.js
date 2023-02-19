@@ -8,16 +8,19 @@ export const addOrderService = async (request) => {
     const order = await Order.create({userId : id,price,products});
     if(!order) {
       return {
-        message : "order not created"        
+        message : "order not created"  ,      
+        error:true
       }
     } 
     return {
       ...order.dataValues,
-      message : "order created"        
+      message : "order created"       ,
+      error:false 
     }
   } catch (error) {
     return {
-      message : error.message
+      message : error.message,
+      error:true
     }
   }
 }

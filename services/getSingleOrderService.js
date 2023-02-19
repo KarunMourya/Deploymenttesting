@@ -14,15 +14,18 @@ export const getSingleOrderService = async (request) => {
     if (!order) {
       return {
         message: error.message,
+        error:true
       };
     } else {
       return {
         order,
+        error:false
       };
     }
   } catch (error) {
     return {
       message: error.message,
+      error:true
     };
   }
 };

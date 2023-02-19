@@ -8,13 +8,15 @@ export const getUserDetailsService = async (request) => {
     if (!user) {
       return {
         message: "ID not found",
+        error:true
       };
     } else {
-      return user;
+      return {user,error:false};
     }
   } catch (error) {
     return {
       message: error.message,
+      error:true
     };
   }
 };
